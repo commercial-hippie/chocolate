@@ -1,0 +1,20 @@
+{
+	"name": "commercial-hippie/chocolate",
+	"description": "Front-End Framework FormHelpers for CakePHP 3.0",
+	"license": "MIT",
+	"type": "cakephp-plugin",
+	"extra": {
+        	"installer-name": "Chocolate"
+    	},
+	"require": {
+		"composer/installers": "*"
+	},
+	"require-dev": {
+		"cakephp/cakephp": "3.0.x-dev"
+	},
+	"autoload": {
+		"psr-4": {
+			"Cake\\Chocolate\\": "src"
+		}
+	}
+}
