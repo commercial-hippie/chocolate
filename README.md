@@ -18,7 +18,7 @@ or add the following into your composer.json and run `composer update`.
 Load the plugin in your bootstrap file
 ```php
 // /src/Config/bootstrap.php
-Plugin::load('Chocolate');
+Plugin::load('Chocolate', ['namespace' => 'CommercialHippie\Chocolate']);
 ```
 
 ## Usage
