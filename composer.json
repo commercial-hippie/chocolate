@@ -5,7 +5,7 @@
 	"type": "cakephp-plugin",
 	"extra": {
         	"installer-name": "Chocolate"
-    	},
+	},
 	"require": {
 		"composer/installers": "*"
 	},
@@ -14,7 +14,7 @@
 	},
 	"autoload": {
 		"psr-4": {
-			"Cake\\Chocolate\\": "src"
+			"Chocolate\\": "src"
 		}
 	}
 }
