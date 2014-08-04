@@ -1,6 +1,6 @@
 <?php
 
-namespace Chocolate\View\Helper;
+namespace Chocolate\View\Helper; 
 
 use \Cake\View\Helper\FormHelper;
 use \Cake\View\View;
