@@ -7,7 +7,7 @@
     	"installer-name": "Chocolate"
 	},
 	"require": {
-		"composer/installers": "*"
+		"cakephp/plugin-installer": "*"
 	},
 	"require-dev": {
 		"cakephp/cakephp": "3.0.x-dev"
