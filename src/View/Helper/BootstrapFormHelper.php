@@ -1,6 +1,6 @@
 <?php
 
-namespace Chocolate\View\Helper; 
+namespace Chocolate\View\Helper;
 
 use \Cake\View\Helper\FormHelper;
 use \Cake\View\View;
@@ -15,31 +15,30 @@ class BootstrapFormHelper extends FormHelper {
 			'date' => 'date', 'float' => 'number', 'integer' => 'number',
 			'decimal' => 'number', 'binary' => 'file', 'uuid' => 'string'
 		],
-		'widgets' => [],
-		'registry' => null,
 		'templates' => [
 			'button' => '<button{{attrs}}>{{text}}</button>',
-			'checkbox' => '<input type="checkbox" name="{{name}}" value="{{value}}"{{attrs}}>',
-			'checkboxFormGroup' => '{{input}}{{label}}',
-			'checkboxWrapper' => '<div class="checkbox">{{input}}{{label}}</div>',
+            'checkbox' => '<input type="checkbox" name="{{name}}" value="{{value}}"{{attrs}}>',
+            'checkboxFormGroup' => '{{label}}',
+            'checkboxWrapper' => '<div class="checkbox">{{label}}</div>',
 			'errorList' => '<ul>{{content}}</ul>',
 			'errorItem' => '<li>{{text}}</li>',
 			'file' => '<input type="file" name="{{name}}"{{attrs}}>',
 			'fieldset' => '<fieldset>{{content}}</fieldset>',
-			'formstart' => '<form{{attrs}}>',
-			'formend' => '</form>',
-			'formGroup' => '{{label}}{{input}}',
+            'formStart' => '<form{{attrs}}>',
+            'formEnd' => '</form>',
+            'formGroup' => '{{label}}{{input}}',
 			'hiddenblock' => '<div style="display:none;">{{content}}</div>',
 			'input' => '<input type="{{type}}" name="{{name}}"{{attrs}}>',
 			'inputsubmit' => '<input type="{{type}}"{{attrs}}>',
 			'label' => '<label{{attrs}}>{{text}}</label>',
+            'nestingLabel' => '{{hidden}}<label{{attrs}}>{{input}}{{text}}</label>',
 			'legend' => '<legend>{{text}}</legend>',
 			'option' => '<option value="{{value}}"{{attrs}}>{{text}}</option>',
 			'optgroup' => '<optgroup label="{{label}}"{{attrs}}>{{content}}</optgroup>',
 			'select' => '<select name="{{name}}"{{attrs}}>{{content}}</select>',
 			'selectMultiple' => '<select name="{{name}}[]" multiple="multiple"{{attrs}}>{{content}}</select>',
-			'radio' => '<input type="radio" name="{{name}}" value="{{value}}"{{attrs}}>',
-			'radioWrapper' => '{{input}}{{label}}',
+            'radio' => '<input type="radio" name="{{name}}" value="{{value}}"{{attrs}}>',
+            'radioWrapper' => '{{label}}',
 			'textarea' => '<textarea name="{{name}}"{{attrs}}>{{value}}</textarea>',
 
 			'dateWidget' => '<div class="row">
@@ -58,9 +57,6 @@ class BootstrapFormHelper extends FormHelper {
 		]
 	];
 
-    public function __construct(View $view, $config = []) {
-        parent::__construct($view, $config);
-    }
 
     public function label($fieldName, $text = null, array $options = []) {
 
