@@ -1,8 +1,8 @@
 <?php
 namespace Chocolate\View\Helper;
 
-use \Cake\View\Helper\FormHelper;
-use \Cake\View\View;
+use Cake\View\Helper\FormHelper;
+use Cake\View\View;
 
 class BootstrapFormHelper extends FormHelper
 {
@@ -42,13 +42,13 @@ class BootstrapFormHelper extends FormHelper
             'textarea' => '<textarea name="{{name}}"{{attrs}}>{{value}}</textarea>',
 
             'dateWidget' => '<div class="row">
-                <div class="col-sm-3">{{year}}</div>
-                <div class="col-sm-3">{{month}}</div>
-                <div class="col-sm-3">{{day}}</div>
-                <div class="col-sm-3">{{hour}}</div>
-                <div class="col-sm-3">{{minute}}</div>
-                <div class="col-sm-3">{{second}}</div>
-                <div class="col-sm-3">{{meridian}}</div>
+                <div class="col-sm-4">{{year}}</div>
+                <div class="col-sm-4">{{month}}</div>
+                <div class="col-sm-4">{{day}}</div>
+                <div class="col-sm-4">{{hour}}</div>
+                <div class="col-sm-4">{{minute}}</div>
+                <div class="col-sm-4">{{second}}</div>
+                <div class="col-sm-4">{{meridian}}</div>
             </div>',
             'error' => '<div class="help-block">{{content}}</div>',
             'submitContainer' => '{{content}}',
@@ -66,16 +66,34 @@ class BootstrapFormHelper extends FormHelper
 
     protected function _getInput($fieldName, $options)
     {
-        if (isset($options['type']) && !in_array($options['type'], ['radio', 'checkbox', 'datetime'])) {
-            $options = $this->addClass($options, 'form-control');
+        if (isset($options['type'])) {
+            if (!in_array($options['type'], ['radio', 'checkbox', 'datetime', 'date'])) {
+                $options = $this->addClass($options, 'form-control');
+            }
+            if (in_array($options['type'], ['datetime', 'date'])) {
+                $options = $this->_addDateTimeWidgetInputClasses($options);
+            }
         }
-
         return parent::_getInput($fieldName, $options);
+    }
+
+    protected function _addDateTimeWidgetInputClasses($options) {
+        foreach (['year', 'month', 'day'] as $name) {
+            $options[$name] = isset($options[$name]) ? $options[$name] : [];
+            $options[$name] = $this->addClass($options[$name], 'form-control');
+        }
+        if ($options['type'] === 'datetime') {
+            foreach (['hour', 'minute', 'second'] as $name) {
+                $options[$name] = isset($options[$name]) ? $options[$name] : [];
+                $options[$name] = $this->addClass($options[$name], 'form-control');
+            }
+        }
+        return $options;
     }
 
     public function submit($caption = null, array $options = [])
     {
-        $options = $this->addClass($options, 'btn btn-default');
+        $options = $this->addClass($options, 'btn btn-primary');
 
         return parent::submit($caption, $options);
     }
@@ -83,6 +101,13 @@ class BootstrapFormHelper extends FormHelper
     public function button($title, array $options = array())
     {
         $options = $this->addClass($options, 'btn btn-default');
+
+        return parent::button($title, $options);
+    }
+
+    public function reset($title, array $options = array())
+    {
+        $options = $this->addClass($options, 'btn btn-link');
 
         return parent::button($title, $options);
     }
